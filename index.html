@@ -178,7 +178,7 @@
         }
 
         .team-column-wrapper {
-            flex: 1 1 0; min-width: min(360px, 100%); max-width: 960px; margin: 0 auto;
+            flex: 1 1 0; min-width: min(360px, 100%); max-width: 1152px; margin: 0 auto;
             display: flex; flex-direction: column;
         }
         .board-column {
@@ -373,16 +373,16 @@
             display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
             gap: 12px;
             width: 100%;
-            max-width: 720px;
+            max-width: 864px;
         }
         .grand-totals-scope-line {
-            width: 100%; max-width: 720px; text-align: center;
+            width: 100%; max-width: 864px; text-align: center;
             font-size: 0.7rem; color: var(--text-muted);
             margin-top: 6px; letter-spacing: 0.03em; opacity: 0.82;
         }
         .grand-total-card {
             flex: 1 1 200px;
-            max-width: 340px;
+            max-width: 408px;
             display: flex; align-items: center;
             gap: 12px;
             padding: 10px 16px;
@@ -676,7 +676,7 @@ function renderPodium(sortedTop3, maxMonthly) {
             '<div class="podium-team-tag">' + escapeHtml(String(item.team || '')) + '</div>' +
             '<div class="podium-vals">' +
             '<div class="val-row"><span class="num" id="daily-' + id + '">' + item.dailyFTD + '</span><span class="lbl">Daily</span></div>' +
-            '<div class="val-row"><span class="num" id="monthly-' + id + '">' + item.monthlyFTD + '</span><span class="lbl">Month</span></div>' +
+            '<div class="val-row"><span class="num" id="monthly-' + id + '">' + item.monthlyFTD + '</span><span class="lbl">Total</span></div>' +
             '</div>' +
             '<div class="podium-progress"><div class="progress-bar-track"><div class="progress-bar-fill" style="width:' + bar + '%"></div></div></div>' +
             '</div><div class="podium-platform"></div></div>';
@@ -709,7 +709,7 @@ function createAgentRow(item, position, maxMonthly) {
     stats.className = 'agent-stats';
     stats.innerHTML =
         '<div class="stat-block daily"><div class="val" id="daily-' + id + '">' + item.dailyFTD + '</div><div class="lbl">Daily</div></div>' +
-        '<div class="stat-block"><div class="val" id="monthly-' + id + '">' + item.monthlyFTD + '</div><div class="lbl">Month</div></div>';
+        '<div class="stat-block"><div class="val" id="monthly-' + id + '">' + item.monthlyFTD + '</div><div class="lbl">Total</div></div>';
 
     var barPct = pctOfMax(item.monthlyFTD, maxMonthly);
     var prog = document.createElement('div');
@@ -739,7 +739,7 @@ function renderGrandTotals(sumD, sumM) {
         '<div class="grand-total-card grand-total-monthly">' +
         '<div class="grand-total-icon"><i class="fas fa-calendar-days"></i></div>' +
         '<div class="grand-total-body">' +
-        '<span class="grand-total-label">Всего FTD за месяц</span>' +
+        '<span class="grand-total-label">Всего FTD за период</span>' +
         '<span class="grand-total-value">' + sumM + '</span></div></div></div>' +
         '<p class="grand-totals-scope-line">' + escapeHtml(scope) + '</p>';
 }
@@ -859,7 +859,7 @@ function showGlitchCelebration(name, teamName, monthlyTotal, delta) {
     content.appendChild(nameEl);
     var ft = document.createElement('div');
     ft.className = 'celebration-ftd';
-    ft.textContent = 'Monthly FTD: ' + monthlyTotal;
+    ft.textContent = 'FTD за период: ' + monthlyTotal;
     var dlt = document.createElement('div');
     dlt.className = 'celebration-delta';
     dlt.textContent = '+' + delta;
